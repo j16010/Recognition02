@@ -18,7 +18,7 @@ public class Recognition02 {
 		// TODO 自動生成されたメソッド・スタブ
 		
 		VisualRecognition service = new VisualRecognition("2018-03-19");
-		service.setApiKey("93699c8911885458e143a7420980bebe1e5a6bc4");
+		service.setApiKey("j16010");
 
 		InputStream imagesStream = null;
 		try {
