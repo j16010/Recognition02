@@ -18,7 +18,7 @@ public class Recognition02 {
 		// TODO 自動生成されたメソッド・スタブ
 		
 		VisualRecognition service = new VisualRecognition("2018-03-19");
-		service.setApiKey("j16010");
+		service.setApiKey("J16010");
 
 		InputStream imagesStream = null;
 		try {
@@ -42,30 +42,36 @@ public class Recognition02 {
 		JsonNode node = null;
 		try {
 			 node = mapper.readTree(s);
+			 
+			 String class1= node.get("images").get(0).get("classifiers").get(0).get("classes").get(0).get("class").toString();
+				System.out.println("class:"+class1);
+				
+				double score1= node.get("images").get(0).get("classifiers").get(0).get("classes").get(0).get("score").asDouble();
+				System.out.println("class:"+score1);
+				
+				
+				String class2= node.get("images").get(0).get("classifiers").get(0).get("classes").get(1).get("class").toString();
+				System.out.println("class:"+class2);
+				
+				double score2= node.get("images").get(0).get("classifiers").get(0).get("classes").get(1).get("score").asDouble();
+				System.out.println("class:"+score2);
+				
+				
+				String class3= node.get("images").get(0).get("classifiers").get(0).get("classes").get(2).get("class").toString();
+				System.out.println("class:"+class3);
+				
+				double score3= node.get("images").get(0).get("classifiers").get(0).get("classes").get(2).get("score").asDouble();
+				System.out.println("class:"+score3);
+				
+				MySQL mysql=new MySQL();
+				mysql.updateImage(class1, score1,class2, score2, class3, score3);
+				
+			 
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 		
-		String class1= node.get("images").get(0).get("classifiers").get(0).get("classes").get(0).get("class").toString();
-		System.out.println("class:"+class1);
-		
-		double score1= node.get("images").get(0).get("classifiers").get(0).get("classes").get(0).get("score").asDouble();
-		System.out.println("class:"+score1);
-		
-		
-		String class2= node.get("images").get(0).get("classifiers").get(0).get("classes").get(1).get("class").toString();
-		System.out.println("class:"+class2);
-		
-		double score2= node.get("images").get(0).get("classifiers").get(0).get("classes").get(1).get("score").asDouble();
-		System.out.println("class:"+score2);
-		
-		
-		String class3= node.get("images").get(0).get("classifiers").get(0).get("classes").get(2).get("class").toString();
-		System.out.println("class:"+class3);
-		
-		double score3= node.get("images").get(0).get("classifiers").get(0).get("classes").get(2).get("score").asDouble();
-		System.out.println("class:"+score3);
 		
 	}
 
